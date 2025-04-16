@@ -66,4 +66,16 @@ class User extends Authenticatable implements JWTSubject
             'password' => 'hashed',
         ];
     }
+
+    // user_id = 1
+    // employe_name = Bambang, user_id = 1
+    public function employees()
+    {
+        return $this->hasMany(Employees::class, 'user_id', 'id');
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employees::class);
+    }
 }

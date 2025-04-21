@@ -104,4 +104,14 @@ class EmployeeController extends Controller
             return response()->json(['success' => true, 'message' => 'Failed Create Employees'], 500);
         }
     }
+
+    public function destroy($id)
+    {
+        try{
+            $employees = Employees::find($id);
+            return response()->json(['message' => 'Employe delete success']);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => $th->getMessage()], 500);
+        }
+    }
 }
